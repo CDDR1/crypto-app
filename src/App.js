@@ -1,6 +1,15 @@
+import NavBar from "./components/Navbar";
+import Footer from "./components/Footer";
+
 const App = () => {
   return (
-    <h1>Hello Crypto!</h1>
+    <div className="app">
+      <NavBar />
+      <div className="main-content-container">
+        <main className="main-content"></main>
+        <Footer />
+      </div>
+    </div>
   );
 };
 

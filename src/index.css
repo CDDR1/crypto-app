@@ -18,3 +18,34 @@ html {
   padding: 0;
   margin: 0;
 }
+
+/* || APP */
+.app {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+}
+
+/* || NAVBAR */
+.nav-container {
+  background-color: var(--color-primary);
+  width: 300px;
+  color: #fff;
+}
+
+.logo-and-title {
+  padding: 1.25rem;
+  gap: 0.75rem;
+  display: flex;
+}
+
+.title {
+  color: #fff;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.menu-container {
+  max-width: 75%;
+}
