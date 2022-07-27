@@ -49,3 +49,43 @@ html {
 .menu-container {
   max-width: 75%;
 }
+
+.mobile-menu {
+  display: none;
+}
+
+/* || RESPONSIVE */
+@media (max-width: 965px) {
+  .nav-container {
+    width: 250px;
+  }
+}
+
+@media (max-width: 870px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .nav-container {
+    width: 100%;
+  }
+
+  .nav {
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-and-title {
+    padding: 0;
+  }
+
+  .menu-container {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+}

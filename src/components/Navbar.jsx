@@ -1,8 +1,14 @@
-import { Avatar, Menu } from "antd";
+import { 
+  Avatar, 
+  Menu,
+  Dropdown,
+  Button,
+} from "antd";
 import {
   HomeOutlined,
   LineChartOutlined,
-  BulbOutlined
+  BulbOutlined,
+  MenuOutlined
 } from '@ant-design/icons';
 import logo from "../assets/images/logo.png";
 
@@ -22,6 +28,15 @@ const Navbar = () => {
     getItem("Home", "3", <BulbOutlined />)
   ];
 
+  const menu = (
+    <Menu
+      defaultSelectedKeys={['1']}
+      // mode="inline"
+      theme="dark"
+      items={items}
+    />
+  );
+
   return (
     <div className="nav-container">
       <div className="nav">
@@ -34,12 +49,15 @@ const Navbar = () => {
           </div>
         </div>
         <div className="menu-container">
-          <Menu
-            defaultSelectedKeys={['1']}
-            mode="inline"
-            theme="dark"
-            items={items}
-          />
+          {menu}
+        </div>
+        {/* Display only on mobile */}
+        <div className="mobile-menu">
+          <Dropdown overlay={menu}>
+            <Button>
+              <MenuOutlined />
+            </Button>
+          </Dropdown>
         </div>
       </div>
     </div>
