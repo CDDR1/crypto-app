@@ -68,6 +68,24 @@ html {
   justify-content: center;
 }
 
+.footer-nav {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.footer-links {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.footer-link {
+  text-decoration: none;
+  list-style: none;
+  display: inline-block;
+}
+
 /* || RESPONSIVE */
 @media (max-width: 965px) {
   .nav-container {
