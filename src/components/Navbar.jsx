@@ -10,6 +10,7 @@ import {
   BulbOutlined,
   MenuOutlined
 } from '@ant-design/icons';
+import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 
 const Navbar = () => {
@@ -23,9 +24,9 @@ const Navbar = () => {
   };
 
   const items = [
-    getItem("Home", "1", <HomeOutlined />),
-    getItem("Cryptocurrencies", "2", <LineChartOutlined />),
-    getItem("News", "3", <BulbOutlined />)
+    getItem("Home", "1", <Link to="/"><HomeOutlined /></Link>),
+    getItem("Cryptocurrencies", "2", <Link to="/cryptocurrencies"><LineChartOutlined /></Link>),
+    getItem("News", "3", <Link to="/news"><BulbOutlined /></Link>)
   ];
 
   const menu = (
