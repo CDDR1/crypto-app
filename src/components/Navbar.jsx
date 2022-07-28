@@ -24,14 +24,13 @@ const Navbar = () => {
 
   const items = [
     getItem("Home", "1", <HomeOutlined />),
-    getItem("Home", "2", <LineChartOutlined />),
-    getItem("Home", "3", <BulbOutlined />)
+    getItem("Cryptocurrencies", "2", <LineChartOutlined />),
+    getItem("News", "3", <BulbOutlined />)
   ];
 
   const menu = (
     <Menu
       defaultSelectedKeys={['1']}
-      // mode="inline"
       theme="dark"
       items={items}
     />
