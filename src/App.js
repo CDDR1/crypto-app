@@ -5,10 +5,8 @@ const App = () => {
   return (
     <div className="app">
       <NavBar />
-      <div className="main-content-container">
-        <main className="main-content"></main>
-        <Footer />
-      </div>
+      <main className="main-content"></main>
+      <Footer />
     </div>
   );
 };

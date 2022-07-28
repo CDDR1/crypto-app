@@ -54,6 +54,20 @@ html {
   display: none;
 }
 
+/* || FOOTER */
+.footer {
+  background-color: var(--color-primary);
+  color: #fff;
+  height: 10rem;
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 /* || RESPONSIVE */
 @media (max-width: 965px) {
   .nav-container {
