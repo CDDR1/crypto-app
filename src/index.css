@@ -26,11 +26,20 @@ html {
   display: flex;
 }
 
+.right-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 /* || NAVBAR */
 .nav-container {
   background-color: var(--color-primary);
-  width: 300px;
   color: #fff;
+}
+
+.nav {
+  height: 100%;
 }
 
 .logo-and-title {
@@ -54,18 +63,28 @@ html {
   display: none;
 }
 
+/* || MAIN CONTENT */
+.main-content {
+  /* height: 150vh; */
+}
+
 /* || FOOTER */
 .footer {
   background-color: var(--color-primary);
   color: #fff;
-  height: 10rem;
+  height: 8rem;
   width: 100%;
-  padding: 10px;
   font-size: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.footer-title, 
+.footer-copyright {
+  display: block;
+  text-align: center;
 }
 
 .footer-nav {
