@@ -3,6 +3,7 @@ import {
   Menu,
   Dropdown,
   Button,
+  Typography
 } from "antd";
 import {
   HomeOutlined,
@@ -12,6 +13,8 @@ import {
 } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
+
+const { Title } = Typography;
 
 const Navbar = () => {
 
@@ -45,7 +48,7 @@ const Navbar = () => {
             <Avatar size={64} src={logo} />
           </div>
           <div className="title-container">
-            <h1 className="title">CryptoApp</h1>
+            <Title className="title">CryptoApp</Title>
           </div>
         </div>
         <div className="menu-container">

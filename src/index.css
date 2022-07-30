@@ -49,7 +49,7 @@ html {
 }
 
 .title {
-  color: #fff;
+  color: #fff !important;
   height: 100%;
   display: flex;
   align-items: center;
@@ -65,7 +65,8 @@ html {
 
 /* || MAIN CONTENT */
 .main-content {
-  /* height: 150vh; */
+  padding: 20px;
+  background-color: #f9f9f9;
 }
 
 /* || FOOTER */
