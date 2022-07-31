@@ -1,5 +1,5 @@
 import { Typography, Col, Row, Statistic, AutoComplete } from "antd";
-import CryptoCard from "./CryptoCard";
+import CryptoCards from "./CryptoCards";
 
 const { Title } = Typography;
 
@@ -38,22 +38,9 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="stats-section" style={{ marginTop: 40 }}>
+      <section className="top-cryptos-section" style={{ marginTop: 40 }}>
         <Title level={2}>Top 10 Cryptos in the World</Title>
-        <Row gutter={[32, 32]}>
-          <Col xs={24} md={12} xl={6}>
-            <CryptoCard />
-          </Col>
-          <Col xs={24} md={12} xl={6}>
-            <CryptoCard />
-          </Col>
-          <Col xs={24} md={12} xl={6}>
-            <CryptoCard />
-          </Col>
-          <Col xs={24} md={12} xl={6}>
-            <CryptoCard />
-          </Col>
-        </Row>
+        <CryptoCards />
       </section>
 
       <section className="latest-news-section" style={{ marginTop: 40 }}>
