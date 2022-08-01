@@ -69,6 +69,13 @@ html {
   background-color: #e9e9e9f3;
 }
 
+/* || NEWS SECTION */
+.news-card-heading,
+.news-card-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* || FOOTER */
 .footer {
   background-color: var(--color-primary);

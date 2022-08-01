@@ -1,5 +1,6 @@
-import { Typography, Col, Row, Statistic, AutoComplete } from "antd";
+import { Typography, Col, Row, Statistic } from "antd";
 import CryptoCards from "./CryptoCards";
+import NewsCards from "./NewsCards";
 
 const { Title } = Typography;
 
@@ -45,6 +46,7 @@ const Home = () => {
 
       <section className="latest-news-section" style={{ marginTop: 40 }}>
         <Title level={2}>Latest Crypto News</Title>
+        <NewsCards />
       </section>
     </>
   );
