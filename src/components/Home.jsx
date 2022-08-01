@@ -1,6 +1,6 @@
 import { Typography, Col, Row, Statistic } from "antd";
-import CryptoCards from "./CryptoCards";
-import NewsCards from "./NewsCards";
+import Cryptocurrencies from "./Cryptocurrencies";
+import News from "./News";
 
 const { Title } = Typography;
 
@@ -41,12 +41,12 @@ const Home = () => {
 
       <section className="top-cryptos-section" style={{ marginTop: 40 }}>
         <Title level={2}>Top 10 Cryptos in the World</Title>
-        <CryptoCards />
+        <Cryptocurrencies />
       </section>
 
       <section className="latest-news-section" style={{ marginTop: 40 }}>
         <Title level={2}>Latest Crypto News</Title>
-        <NewsCards />
+        <News />
       </section>
     </>
   );
