@@ -1,10 +1,14 @@
 import { Typography, Col, Row, Statistic } from "antd";
 import Cryptocurrencies from "./Cryptocurrencies";
 import News from "./News";
+import { useGetCoinsQuery } from "../slices/coinsSlice";
 
 const { Title } = Typography;
 
 const Home = () => {
+  const { data, error, isLoading, isSuccess } = useGetCoinsQuery();
+  console.log(data);
+
   return (
     <>
       <section className="stats-section">
