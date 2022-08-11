@@ -1,6 +1,5 @@
 @import "~antd/dist/antd.css";
 
-
 /* || CUSTOM PROPERTIES */
 :root {
   --color-primary: #001529;
@@ -81,6 +80,17 @@ html {
 }
 
 /* || CRYPTOCURRENCIES SECTION */
+.search-input {
+  margin: 30px 0 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-cryptos {
+  max-width: 300px;
+  position: static;
+}
+
 .coin-stat-container {
   display: flex;
   gap: 0.5rem;
@@ -106,7 +116,7 @@ html {
   justify-content: center;
 }
 
-.footer-title, 
+.footer-title,
 .footer-copyright {
   display: block;
   text-align: center;
