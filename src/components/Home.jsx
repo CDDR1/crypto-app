@@ -12,7 +12,7 @@ const Home = () => {
   
   if (isFetching) return "Loading...";
 
-  const { total, totalExchanges, totalMarketCap, total24hVolume, totalCoins, totalMarkets } = data.data.stats;
+  const { total, totalExchanges, totalMarketCap, total24hVolume, totalMarkets } = data.data.stats;
 
   return (
     <>
