@@ -38,9 +38,6 @@ const Home = () => {
 
           <Row gutter={16} style={{ marginTop: 25 }}>
             <Col span={12}>
-              <Statistic title={"Total Coins"} value={totalCoins} />
-            </Col>
-            <Col span={12}>
               <Statistic title={"Total Markets"} value={millify(totalMarkets, {precision: 0})} />
             </Col>
           </Row>
