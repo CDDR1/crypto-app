@@ -3,6 +3,7 @@ import Cryptocurrencies from "./Cryptocurrencies";
 import News from "./News";
 import { useGetCoinsQuery } from "../slices/coinsSlice";
 import millify from "millify";
+import { Link } from "react-router-dom";
 
 const { Title } = Typography;
 
@@ -45,12 +46,18 @@ const Home = () => {
       </section>
 
       <section className="top-cryptos-section" style={{ marginTop: 40 }}>
-        <Title level={2}>Top 10 Cryptos in the World</Title>
+        <div className="section-heading">
+          <Title level={2} className="section-title">Top 10 Cryptos in The World</Title>
+          <Title level={3}><Link to="/cryptocurrencies">Show more</Link></Title>
+        </div>
         <Cryptocurrencies />
       </section>
 
       <section className="latest-news-section" style={{ marginTop: 40 }}>
-        <Title level={2}>Latest Crypto News</Title>
+      <div className="section-heading">
+          <Title level={2} className="section-title">Latest Crypto News</Title>
+          <Title level={3}><Link to="/news">Show more</Link></Title>
+        </div>
         <News />
       </section>
     </>
