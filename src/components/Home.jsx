@@ -2,6 +2,7 @@ import { Typography, Col, Row, Statistic } from "antd";
 import Cryptocurrencies from "./Cryptocurrencies";
 import News from "./News";
 import { useGetCoinsQuery } from "../slices/coinsSlice";
+import millify from "millify";
 
 const { Title } = Typography;
 
@@ -10,8 +11,7 @@ const Home = () => {
   
   if (isFetching) return "Loading...";
 
-  const globalCryptoStats = data.data.stats;
-  console.log(globalCryptoStats);
+  const { total, totalExchanges, totalMarketCap, total24hVolume, totalCoins, totalMarkets } = data.data.stats;
 
   return (
     <>
@@ -20,28 +20,28 @@ const Home = () => {
         <div className="crypto-statistics">
           <Row gutter={16}>
             <Col span={12}>
-              <Statistic title={"Total Cryptocurrencies"} value={globalCryptoStats.total} />
+              <Statistic title={"Total Cryptocurrencies"} value={total} />
             </Col>
             <Col span={12}>
-              <Statistic title={"Total Exchanges"} value={globalCryptoStats.totalExchanges} />
-            </Col>
-          </Row>
-
-          <Row gutter={16} style={{ marginTop: 25 }}>
-            <Col span={12}>
-              <Statistic title={"Total Market Cap"} value={globalCryptoStats.totalMarketCap} />
-            </Col>
-            <Col span={12}>
-              <Statistic title={"Total 24h Volume"} value={globalCryptoStats.total24hVolume} />
+              <Statistic title={"Total Exchanges"} value={totalExchanges} />
             </Col>
           </Row>
 
           <Row gutter={16} style={{ marginTop: 25 }}>
             <Col span={12}>
-              <Statistic title={"Total Coins"} value={globalCryptoStats.totalCoins} />
+              <Statistic title={"Total Market Cap"} value={`$${millify(totalMarketCap)}`} />
             </Col>
             <Col span={12}>
-              <Statistic title={"Total Markets"} value={globalCryptoStats.totalMarkets} />
+              <Statistic title={"Total 24h Volume"} value={`$${millify(total24hVolume)}`} />
+            </Col>
+          </Row>
+
+          <Row gutter={16} style={{ marginTop: 25 }}>
+            <Col span={12}>
+              <Statistic title={"Total Coins"} value={totalCoins} />
+            </Col>
+            <Col span={12}>
+              <Statistic title={"Total Markets"} value={millify(totalMarkets, {precision: 0})} />
             </Col>
           </Row>
         </div>
