@@ -80,6 +80,12 @@ html {
   margin: 0 !important;
 }
 
+/* || CRYPTOCURRENCIES SECTION */
+.coin-stat-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
 /* || NEWS SECTION */
 .news-card-heading,
 .news-card-bottom {

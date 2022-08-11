@@ -50,7 +50,7 @@ const Home = () => {
           <Title level={2} className="section-title">Top 10 Cryptos in The World</Title>
           <Title level={3}><Link to="/cryptocurrencies">Show more</Link></Title>
         </div>
-        <Cryptocurrencies />
+        <Cryptocurrencies simplified={true} />
       </section>
 
       <section className="latest-news-section" style={{ marginTop: 40 }}>
@@ -58,7 +58,7 @@ const Home = () => {
           <Title level={2} className="section-title">Latest Crypto News</Title>
           <Title level={3}><Link to="/news">Show more</Link></Title>
         </div>
-        <News />
+        <News simplified={true} />
       </section>
     </>
   );

@@ -14,8 +14,8 @@ const App = () => {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/cryptocurrencies" element={<Cryptocurrencies />} />
-            <Route path="/news" element={<News />} />
+            <Route path="/cryptocurrencies" element={<Cryptocurrencies simplified={false} />} />
+            <Route path="/news" element={<News simplified={false} />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
