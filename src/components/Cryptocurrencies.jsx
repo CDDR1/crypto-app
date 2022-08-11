@@ -1,6 +1,7 @@
 import CryptoCard from "./CryptoCard";
 import { Row, Col } from "antd";
 import { useGetCoinsQuery } from "../slices/coinsSlice";
+import { Link } from "react-router-dom";
 
 const Cryptocurrencies = ({ simplified }) => {
   const { data } = useGetCoinsQuery();
@@ -12,13 +13,15 @@ const Cryptocurrencies = ({ simplified }) => {
       {
         coins.map((coin) => 
           <Col xs={24} md={12} xl={8} xxl={6} key={coin.uuid}>
-            <CryptoCard 
-              name={coin.name}
-              icon={coin.iconUrl}
-              price={coin.price}
-              marketCap={coin.marketCap}
-              dailyChange={coin.change}
-            />
+            <Link to={`/cryptocurrencies/:${coin.uuid}`}>
+              <CryptoCard 
+                name={coin.name}
+                icon={coin.iconUrl}
+                price={coin.price}
+                marketCap={coin.marketCap}
+                dailyChange={coin.change}
+              />
+            </Link>
           </Col>
         )
       }
