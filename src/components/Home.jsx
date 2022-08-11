@@ -6,8 +6,12 @@ import { useGetCoinsQuery } from "../slices/coinsSlice";
 const { Title } = Typography;
 
 const Home = () => {
-  const { data, error, isLoading, isSuccess } = useGetCoinsQuery();
-  console.log(data);
+  const { data, isFetching } = useGetCoinsQuery();
+  
+  if (isFetching) return "Loading...";
+
+  const globalCryptoStats = data.data.stats;
+  console.log(globalCryptoStats);
 
   return (
     <>
@@ -16,28 +20,28 @@ const Home = () => {
         <div className="crypto-statistics">
           <Row gutter={16}>
             <Col span={12}>
-              <Statistic title={"Title Here"} value={9999} />
+              <Statistic title={"Total Cryptocurrencies"} value={globalCryptoStats.total} />
             </Col>
             <Col span={12}>
-              <Statistic title={"Title Here"} value={9999} />
-            </Col>
-          </Row>
-
-          <Row gutter={16} style={{ marginTop: 25 }}>
-            <Col span={12}>
-              <Statistic title={"Title Here"} value={9999} />
-            </Col>
-            <Col span={12}>
-              <Statistic title={"Title Here"} value={9999} />
+              <Statistic title={"Total Exchanges"} value={globalCryptoStats.totalExchanges} />
             </Col>
           </Row>
 
           <Row gutter={16} style={{ marginTop: 25 }}>
             <Col span={12}>
-              <Statistic title={"Title Here"} value={9999} />
+              <Statistic title={"Total Market Cap"} value={globalCryptoStats.totalMarketCap} />
             </Col>
             <Col span={12}>
-              <Statistic title={"Title Here"} value={9999} />
+              <Statistic title={"Total 24h Volume"} value={globalCryptoStats.total24hVolume} />
+            </Col>
+          </Row>
+
+          <Row gutter={16} style={{ marginTop: 25 }}>
+            <Col span={12}>
+              <Statistic title={"Total Coins"} value={globalCryptoStats.totalCoins} />
+            </Col>
+            <Col span={12}>
+              <Statistic title={"Total Markets"} value={globalCryptoStats.totalMarkets} />
             </Col>
           </Row>
         </div>
