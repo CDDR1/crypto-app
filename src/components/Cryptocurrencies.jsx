@@ -52,7 +52,7 @@ const Cryptocurrencies = ({ simplified }) => {
           cryptoCards.filter(cryptoCard => {
             const cryptoCardName = cryptoCard.props.children.props.children.props.name;
             return cryptoCardName.toLowerCase().includes(searchText.toLowerCase());
-          })
+          }) 
         }
       </Row>
     </>
