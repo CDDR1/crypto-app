@@ -17,7 +17,11 @@ const NewsCard = ({ name, image, description, providerImg, providerName, datePub
           alt="News image" 
         />
       </div>
-      <Text className="news-card-description">{description}</Text>
+      <Text className="news-card-description">
+        {
+          description.length > 150 ? description.slice(0, 150) + "..." : description
+        }
+      </Text>
       <div className="news-card-bottom">
         <div className="news-card-provider">
           <Avatar 
