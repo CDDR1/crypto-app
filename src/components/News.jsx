@@ -2,6 +2,8 @@ import { Row, Col } from "antd";
 import { useGetNewsQuery } from "../slices/newsSlice";
 import NewsCard from "./NewsCard";
 
+import { v4 as uuidv4 } from 'uuid';
+
 const News = ({ simplified }) => {
   const { data } = useGetNewsQuery();
 
@@ -11,7 +13,7 @@ const News = ({ simplified }) => {
   return (
     <Row gutter={[32, 32]}>
       {newsArticles.map((newsArticle) =>
-        <Col xs={24} xl={12} xxl={8}>
+        <Col xs={24} xl={12} xxl={8} key={uuidv4()}>
             <a href={newsArticle.url} target="_blank">
               <NewsCard
                 name={newsArticle.name}
