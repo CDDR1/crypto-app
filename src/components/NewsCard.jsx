@@ -8,7 +8,7 @@ const NewsCard = ({ name, image, description, providerImg, providerName, datePub
   return (
     <Card hoverable style={{height: 325}}>
       <div className="news-card-heading">
-        <Title level={3}>{name}</Title>
+        <Title level={3} className="news-card-name">{name}</Title>
         <Avatar 
           shape="square" 
           size={120} 
@@ -17,9 +17,9 @@ const NewsCard = ({ name, image, description, providerImg, providerName, datePub
           alt="News image" 
         />
       </div>
-      <Text>{description}</Text>
+      <Text className="news-card-description">{description}</Text>
       <div className="news-card-bottom">
-        <div>
+        <div className="news-card-provider">
           <Avatar 
             shape="circle" 
             size={40}

@@ -103,6 +103,26 @@ html {
   justify-content: space-between;
 }
 
+.news-card-name {
+  max-width: 65%;
+}
+
+.news-card-description {
+  display: inline-block;
+  margin-top: 0.75rem;
+}
+
+.news-card-bottom {
+  margin-top: 0.75rem;
+  align-items: center;
+}
+
+.news-card-provider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 /* || FOOTER */
 .footer {
   background-color: var(--color-primary);
