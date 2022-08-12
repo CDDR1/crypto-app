@@ -19,7 +19,7 @@ const NewsCard = ({ name, image, description, providerImg, providerName, datePub
       </div>
       <Text className="news-card-description">
         {
-          description.length > 150 ? description.slice(0, 150) + "..." : description
+          description.length > 150 ? `${description.slice(0, 150)}...` : description
         }
       </Text>
       <div className="news-card-bottom">
