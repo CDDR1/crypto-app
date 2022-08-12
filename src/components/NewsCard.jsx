@@ -1,5 +1,6 @@
 import { Card, Avatar, Typography } from "antd";
 import { FileImageOutlined } from "@ant-design/icons";
+import moment from "moment";
 
 const { Title, Text } = Typography;
 
@@ -20,14 +21,14 @@ const NewsCard = ({ name, image, description, providerImg, providerName, datePub
       <div className="news-card-bottom">
         <div>
           <Avatar 
-          shape="circle" 
-          size={40}
-          src={providerImg} 
-          icon={<FileImageOutlined />} 
+            shape="circle" 
+            size={40}
+            src={providerImg} 
+            icon={<FileImageOutlined />} 
           />
           <Text>{providerName}</Text>
         </div>
-        <Text>{datePublished}</Text>
+        <Text>{moment(datePublished).fromNow()}</Text>
       </div>
     </Card>
   );
