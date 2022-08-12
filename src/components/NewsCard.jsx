@@ -1,21 +1,33 @@
 import { Card, Avatar, Typography } from "antd";
+import { FileImageOutlined } from "@ant-design/icons";
 
 const { Title, Text } = Typography;
 
-const NewsCard = () => {
+const NewsCard = ({ name, image, description, providerImg, providerName, datePublished }) => {
   return (
     <Card hoverable style={{height: 325}}>
       <div className="news-card-heading">
-        <Title level={3}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita at similique ullam.</Title>
-        <Avatar shape="square" size={64} />
+        <Title level={3}>{name}</Title>
+        <Avatar 
+          shape="square" 
+          size={120} 
+          src={image} 
+          icon={<FileImageOutlined />} 
+          alt="News image" 
+        />
       </div>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, totam! Quam sint enim blanditiis numquam.</Text>
+      <Text>{description}</Text>
       <div className="news-card-bottom">
         <div>
-          <Avatar />
-          <Text>Some News Name</Text>
+          <Avatar 
+          shape="circle" 
+          size={40}
+          src={providerImg} 
+          icon={<FileImageOutlined />} 
+          />
+          <Text>{providerName}</Text>
         </div>
-        <Text>publication date</Text>
+        <Text>{datePublished}</Text>
       </div>
     </Card>
   );
