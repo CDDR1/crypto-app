@@ -1,6 +1,6 @@
 import { Typography, Col, Row, Statistic } from "antd";
 import Cryptocurrencies from "./Cryptocurrencies";
-import News from "./News";
+import News from "../components/News";
 import { useGetCoinsQuery } from "../slices/coinsSlice";
 import { useGetNewsQuery } from "../slices/newsSlice";
 import millify from "millify";
@@ -13,7 +13,6 @@ const Home = () => {
   const { data: news, isFetching: loadingNews } = useGetNewsQuery();
   
   if (loadingCoins || loadingNews) return "Loading...";
-  console.log(news.value);
 
   const { total, totalExchanges, totalMarketCap, total24hVolume, totalMarkets } = coins.data.stats;
 

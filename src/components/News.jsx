@@ -1,29 +1,31 @@
 import { Row, Col } from "antd";
+import { useGetNewsQuery } from "../slices/newsSlice";
 import NewsCard from "./NewsCard";
 
-const NewsCards = ({ simplified }) => {
+const News = ({ simplified }) => {
+  const { data } = useGetNewsQuery();
+
+  const newsArticles = simplified ? data.value.slice(0, 10) : data.value;
+  // console.log(newsArticles)
+
   return (
     <Row gutter={[32, 32]}>
-      <Col xs={24} xl={12} xxl={8} >
-        <NewsCard />
-      </Col>
-      <Col xs={24} xl={12} xxl={8} >
-        <NewsCard />
-      </Col>
-      <Col xs={24} xl={12} xxl={8} >
-        <NewsCard />
-      </Col>
-      <Col xs={24} xl={12} xxl={8} >
-        <NewsCard />
-      </Col>
-      <Col xs={24} xl={12} xxl={8} >
-        <NewsCard />
-      </Col>
-      <Col xs={24} xl={12} xxl={8} >
-        <NewsCard />
-      </Col>
+      {newsArticles.map((newsArticle) =>
+        <Col xs={24} xl={12} xxl={8}>
+            <a href={newsArticle.url} target="_blank">
+              <NewsCard
+                name={newsArticle.name}
+                image={newsArticle.image?.thumbnail.contentUrl}
+                description={newsArticle.description}
+                providerImg={newsArticle.provider[0].image?.thumbnail.contentUrl}
+                providerName={newsArticle.provider[0].name}
+                datePublished={newsArticle.datePublished}
+              />
+            </a>
+          </Col>
+      )}
     </Row>
   );
 };
 
-export default NewsCards;
+export default News;

@@ -2,7 +2,7 @@ import { Card, Avatar, Typography } from "antd";
 
 const { Title, Text } = Typography;
 
-const NewsCards = () => {
+const NewsCard = () => {
   return (
     <Card hoverable style={{height: 325}}>
       <div className="news-card-heading">
@@ -21,4 +21,4 @@ const NewsCards = () => {
   );
 };
 
-export default NewsCards;
+export default NewsCard;

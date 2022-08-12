@@ -6,7 +6,7 @@ export const newsApi = createApi({
   endpoints: (builder) => ({
     getNews: builder.query({
       query: () => ({
-        url: "/news/search?q=Cryptocurrency&safeSearch=Off&textFormat=Raw&reshness=Day&count=24",
+        url: "/news/search?q=Cryptocurrency&safeSearch=Off&textFormat=Raw&reshness=Day&count=50",
         headers: {
           "X-BingApis-SDK": "true",
           "X-RapidAPI-Key": "fa16bbeba3msh659eb472112419ep1f7f7djsnd35911ebf66e",
