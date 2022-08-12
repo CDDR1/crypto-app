@@ -2,17 +2,20 @@ import { Typography, Col, Row, Statistic } from "antd";
 import Cryptocurrencies from "./Cryptocurrencies";
 import News from "./News";
 import { useGetCoinsQuery } from "../slices/coinsSlice";
+import { useGetNewsQuery } from "../slices/newsSlice";
 import millify from "millify";
 import { Link } from "react-router-dom";
 
 const { Title } = Typography;
 
 const Home = () => {
-  const { data, isFetching } = useGetCoinsQuery();
+  const { data: coins, isFetching: loadingCoins } = useGetCoinsQuery();
+  const { data: news, isFetching: loadingNews } = useGetNewsQuery();
   
-  if (isFetching) return "Loading...";
+  if (loadingCoins || loadingNews) return "Loading...";
+  console.log(news.value);
 
-  const { total, totalExchanges, totalMarketCap, total24hVolume, totalMarkets } = data.data.stats;
+  const { total, totalExchanges, totalMarketCap, total24hVolume, totalMarkets } = coins.data.stats;
 
   return (
     <>

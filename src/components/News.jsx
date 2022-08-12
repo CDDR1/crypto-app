@@ -1,7 +1,7 @@
 import { Row, Col } from "antd";
 import NewsCard from "./NewsCard";
 
-const NewsCards = () => {
+const NewsCards = ({ simplified }) => {
   return (
     <Row gutter={[32, 32]}>
       <Col xs={24} xl={12} xxl={8} >
