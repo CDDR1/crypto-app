@@ -6,7 +6,7 @@ const { Title, Text } = Typography;
 
 const NewsCard = ({ name, image, description, providerImg, providerName, datePublished }) => {
   return (
-    <Card hoverable style={{height: 325}}>
+    <Card hoverable style={{height: "auto", minHeight: "325px"}}>
       <div className="news-card-heading">
         <Title level={3} className="news-card-name">{name}</Title>
         <Avatar 
@@ -14,7 +14,7 @@ const NewsCard = ({ name, image, description, providerImg, providerName, datePub
           size={120} 
           src={image} 
           icon={<FileImageOutlined />} 
-          alt="News image" 
+          alt="News thumbnail image" 
         />
       </div>
       <Text className="news-card-description">
@@ -29,6 +29,7 @@ const NewsCard = ({ name, image, description, providerImg, providerName, datePub
             size={40}
             src={providerImg} 
             icon={<FileImageOutlined />} 
+            alt="News provider logo"
           />
           <Text>{providerName}</Text>
         </div>
