@@ -1,6 +1,7 @@
 import { Row, Col, Select } from "antd";
 import { useGetNewsQuery } from "../slices/newsSlice";
 import { useGetCoinsQuery } from "../slices/coinsSlice";
+import { useState } from "react";
 import NewsCard from "./NewsCard";
 
 import { v4 as uuidv4 } from 'uuid';
@@ -14,12 +15,16 @@ const News = ({ simplified }) => {
 
   const { data: coins } = useGetCoinsQuery();
 
+  const [selection, setSelection] = useState("");
+
   const onChange = (value) => {
-    console.log(`selected ${value}`);
+    setSelection(value);
+    console.log(selection);
   };
   
   const onSearch = (value) => {
-    console.log('search:', value);
+    setSelection(value);
+    console.log(selection);
   };
 
   return (
@@ -33,27 +38,33 @@ const News = ({ simplified }) => {
           onChange={onChange}
           onSearch={onSearch}
           filterOption={(input, option) => option.children.toLowerCase().includes(input.toLowerCase())}
+          style={{marginBottom: "25px", width: "180px"}}
         >
+          <Option value="">All</Option>
           {
             coins.data.coins.map(coin => <Option value={coin.name} key={coin.uuid}>{coin.name}</Option>)
           }
         </Select>
       }
       <Row gutter={[32, 32]}>
-        {newsArticles.map((newsArticle) =>
-          <Col xs={24} xl={12} xxl={8} key={uuidv4()}>
-              <a href={newsArticle.url} target="_blank">
-                <NewsCard
-                  name={newsArticle.name}
-                  image={newsArticle.image?.thumbnail.contentUrl}
-                  description={newsArticle.description}
-                  providerImg={newsArticle.provider[0].image?.thumbnail.contentUrl}
-                  providerName={newsArticle.provider[0].name}
-                  datePublished={newsArticle.datePublished}
-                />
-              </a>
+        {
+          newsArticles
+          .filter(newsArticle => newsArticle.name.toLowerCase().includes(selection.toLowerCase()))
+          .map((newsArticle) =>
+            <Col xs={24} xl={12} xxl={8} key={uuidv4()}>
+                <a href={newsArticle.url} target="_blank">
+                  <NewsCard
+                    name={newsArticle.name}
+                    image={newsArticle.image?.thumbnail.contentUrl}
+                    description={newsArticle.description}
+                    providerImg={newsArticle.provider[0].image?.thumbnail.contentUrl}
+                    providerName={newsArticle.provider[0].name}
+                    datePublished={newsArticle.datePublished}
+                  />
+                </a>
             </Col>
-        )}
+          )
+        }
       </Row>
     </>
   );
