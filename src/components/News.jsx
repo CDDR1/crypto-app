@@ -1,10 +1,12 @@
-import { Row, Col, Select } from "antd";
+import { Row, Col, Select, Typography } from "antd";
 import { useGetNewsQuery } from "../slices/newsSlice";
 import { useGetCoinsQuery } from "../slices/coinsSlice";
 import { useState } from "react";
 import NewsCard from "./NewsCard";
-
 import { v4 as uuidv4 } from 'uuid';
+
+const { Title } = Typography;
+
 
 const { Option } = Select;
 
@@ -19,6 +21,9 @@ const News = ({ simplified }) => {
 
   return (
     <>
+      {
+        !simplified && <Title level={2}>Latest Crypto News</Title>
+      }
       {
         !simplified && 
         <Select

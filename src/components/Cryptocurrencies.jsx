@@ -13,6 +13,7 @@ const Cryptocurrencies = ({ simplified }) => {
   const { data } = useGetCoinsQuery();
 
   const coins = simplified ? data.data.coins.slice(0, 10) : data.data.coins;
+  console.log(coins) ///////////////////
 
   const [searchText, setSearchText] = useState("");
 
