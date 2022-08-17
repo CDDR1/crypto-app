@@ -11,7 +11,7 @@ const { Option } = Select;
 const News = ({ simplified }) => {
   const { data } = useGetNewsQuery();
 
-  const newsArticles = simplified ? data.value.slice(0, 10) : data.value;
+  const newsArticles = simplified ? data.value.slice(0, 9) : data.value;
 
   const { data: coins } = useGetCoinsQuery();
 

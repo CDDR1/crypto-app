@@ -27,8 +27,10 @@ html {
 
 .right-content {
   width: 100%;
+  background-color: #e9e9e9f3;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 /* || NAVBAR */
@@ -65,7 +67,6 @@ html {
 /* || MAIN CONTENT */
 .main-content {
   padding: 32px;
-  background-color: #e9e9e9f3;
 }
 
 /* || SECTION */
