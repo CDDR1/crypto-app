@@ -13,13 +13,12 @@ const Cryptocurrencies = ({ simplified }) => {
   const { data } = useGetCoinsQuery();
 
   const coins = simplified ? data.data.coins.slice(0, 10) : data.data.coins;
-  console.log(coins) ///////////////////
 
   const [searchText, setSearchText] = useState("");
 
   const cryptoCards = coins.map((coin) => 
     <Col xs={24} md={12} xl={8} xxl={6} key={coin.uuid}>
-      <Link to={`/cryptocurrencies/:${coin.uuid}`}>
+      <Link to={`/cryptocurrencies/${coin.uuid}`}>
         <CryptoCard 
           name={coin.name}
           icon={coin.iconUrl}
