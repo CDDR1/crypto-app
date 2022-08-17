@@ -17,16 +17,6 @@ const News = ({ simplified }) => {
 
   const [selection, setSelection] = useState("");
 
-  const onChange = (value) => {
-    setSelection(value);
-    console.log(selection);
-  };
-  
-  const onSearch = (value) => {
-    setSelection(value);
-    console.log(selection);
-  };
-
   return (
     <>
       {
@@ -35,8 +25,8 @@ const News = ({ simplified }) => {
           showSearch
           placeholder="Select a cryptocurrency"
           optionFilterProp="children"
-          onChange={onChange}
-          onSearch={onSearch}
+          onChange={(value) => setSelection(value)}
+          onSearch={(value) => setSelection(value)}
           filterOption={(input, option) => option.children.toLowerCase().includes(input.toLowerCase())}
           style={{marginBottom: "25px", width: "180px"}}
         >
