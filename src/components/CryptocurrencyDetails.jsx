@@ -1,17 +1,21 @@
-import { useParams } from 'react-router-dom';
-import { useGetCoinsQuery } from '../slices/coinsSlice';
+import { useParams } from "react-router-dom";
+import { useGetCoinsQuery } from "../slices/coinsSlice";
 import { useGetCoinHistoryQuery } from "../slices/coinsSlice";
-import { Typography } from 'antd';
-import CryptoChart from './CryptoChart';
+import { useState } from "react";
+import { Typography } from "antd";
+import CryptoChart from "./CryptoChart";
 
 const { Title } = Typography;
 
 const CryptocurrencyDetails = () => {
+  const time = ["3h", "24h", "7d", "30d", "1y", "3m", "3y", "5y"];
+  
+  const [ chartTime, setChartTime ] = useState("5y");
   const { id } = useParams();
   const { data } = useGetCoinsQuery();
-  const { data: coinHistory } = useGetCoinHistoryQuery();
+  const { data: coinHistory } = useGetCoinHistoryQuery({ id, chartTime });
   console.log(coinHistory.data.history);
-  
+
   const filteredCoin = data.data.coins.filter((coin) => coin.uuid === id);
   const coin = filteredCoin[0];
   // console.log(coin)
@@ -26,6 +30,6 @@ const CryptocurrencyDetails = () => {
       <CryptoChart />
     </>
   );
-}
+};
 
 export default CryptocurrencyDetails;
