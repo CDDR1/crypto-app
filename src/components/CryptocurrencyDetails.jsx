@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useGetCoinsQuery } from '../slices/coinsSlice';
 import { Typography } from 'antd';
+import CryptoChart from './CryptoChart';
 
 const { Title } = Typography;
 
@@ -19,6 +20,7 @@ const CryptocurrencyDetails = () => {
         <p>{`${coin.name} live price in US Dollar (USD). View value statistics, market cap and supply.`}</p>
       </div>
       <hr />
+      <CryptoChart />
     </>
   );
 }
