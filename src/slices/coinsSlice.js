@@ -22,8 +22,18 @@ export const cryptoApi = createApi({
         }
       })
     }),
+    getCoinDetails: builder.query({
+      query: ({ id, chartTime }) => ({
+        url: `https://coinranking1.p.rapidapi.com/coin/${id}?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=${chartTime}`,
+        headers: {
+          'X-RapidAPI-Key': 'fa16bbeba3msh659eb472112419ep1f7f7djsnd35911ebf66e',
+          'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+        }
+      })
+    })
   }),
 });
 
 export const { useGetCoinsQuery } = cryptoApi;
 export const { useGetCoinHistoryQuery } = cryptoApi;
+export const { useGetCoinDetailsQuery } = cryptoApi;
