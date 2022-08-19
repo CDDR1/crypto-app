@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useGetCoinsQuery, useGetCoinHistoryQuery, useGetCoinDetailsQuery } from "../slices/coinsSlice";
 import { useState } from "react";
 import { Typography, Select, Col, Row } from "antd";
-import { DollarCircleOutlined, NumberOutlined, ThunderboltOutlined, TrophyOutlined } from "@ant-design/icons";
+import { DollarCircleOutlined, NumberOutlined, ThunderboltOutlined, CloseOutlined, CheckOutlined, TrophyOutlined, LineChartOutlined, MoneyCollectOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
 import CryptoChart from "./CryptoChart";
 
 const { Title } = Typography;
@@ -26,12 +26,20 @@ const CryptocurrencyDetails = () => {
 
   const details = coinDetails.data.coin;
   const valueStats = [
-    {icon: <DollarCircleOutlined />, title: "Price to USD", value: `$ ${details.price}`},
-    {icon: <NumberOutlined />, title: "Rank", value: details.rank},
-    {icon: <ThunderboltOutlined />, title: "24h Volume", value: `$ ${details["24hVolume"]}`},
-    {icon: <DollarCircleOutlined />, title: "Market Cap", value: `$ ${details.marketCap}`},
-    {icon: <TrophyOutlined />, title: "All-time-high (dailyavg.)", value: `$ ${details.allTimeHigh.price}`}
-  ]
+    { icon: <DollarCircleOutlined />, title: "Price to USD", value: `$ ${details.price}` },
+    { icon: <NumberOutlined />, title: "Rank", value: details.rank },
+    { icon: <ThunderboltOutlined />, title: "24h Volume", value: `$ ${details["24hVolume"]}` },
+    { icon: <DollarCircleOutlined />, title: "Market Cap", value: `$ ${details.marketCap}` },
+    { icon: <TrophyOutlined />, title: "All-time-high (dailyavg.)", value: `$ ${details.allTimeHigh.price}` },
+  ];
+
+  const otherStats = [
+    { icon: <LineChartOutlined />, title: "Number of Markets", value: details.numberOfMarkets },
+    { icon: <MoneyCollectOutlined />, title: "Number of Exchanges", value: details.numberOfExchanges },
+    { icon: <ExclamationCircleOutlined />, title: "Approved Supply", value: details.supply.confirmed ? <CheckOutlined /> : <CloseOutlined /> },
+    { icon: <ExclamationCircleOutlined />, title: "Total Supply", value: details.supply.total },
+    { icon: <ExclamationCircleOutlined />, title: "Circulating Supply", value: details.supply.circulating },
+  ];
 
   return (
     <>
@@ -48,16 +56,16 @@ const CryptocurrencyDetails = () => {
           }}
           onChange={(value) => setChartTime(value)}
         >
-          {
-            time.map((timeperiod, index) => <Option value={timeperiod} key={index} >{timeperiod}</Option>)
-          }
+          {time.map((timeperiod, index) => (
+            <Option value={timeperiod} key={index}>
+              {timeperiod}
+            </Option>
+          ))}
         </Select>
         <div className="chart-title-stats">
           <Title level={3}>{coin.name} Price Chart</Title>
           <ul className="stats">
-            <li className="stat">
-              Change: {history.data.change}%
-            </li>
+            <li className="stat">Change: {history.data.change}%</li>
             <li className="stat">
               Current {coin.name} Price: $ {history.data.history[0].price}
             </li>
@@ -65,30 +73,42 @@ const CryptocurrencyDetails = () => {
         </div>
       </div>
       <CryptoChart history={history.data.history} />
-      <Row gutter={16}>
-        <Col span={12}>
+      <Row gutter={32}>
+        <Col span={14}>
           <Title level={3}>{coin.name} Value Statistics</Title>
-          <p className="coin-statistics-description">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod quae velit at corrupti illo laborum voluptatem nesciunt perferendis fugiat assumenda.
-          </p>
+          <p className="coin-statistics-description">An overview showing the statistics of {coin.name}, such as the base and the quote currency, the rank, and trading volume.</p>
           <Row>
-            {
-              valueStats.map(stat => 
+            {valueStats.map((stat) => (
               <Col span={24} className="stat-col">
                 <div className="stat-name">
-                  <span>
-                    {stat.icon}
-                  </span>
-                  <span>
-                    {stat.title}
-                  </span>
+                  <span>{stat.icon}</span>
+                  <span>{stat.title}</span>
                 </div>
-                <span className="stat-value">
-                  {stat.value}
-                </span>
-              </Col>)
-            }
+                <span className="stat-value">{stat.value}</span>
+              </Col>
+            ))}
           </Row>
+        </Col>
+
+        <Col span={10}>
+          <Title level={3}>Other Stats Info</Title>
+          <p>An overall look to relevant statistics in the crypto world, involving exhanges and currencies.</p>
+          <Row>
+            {otherStats.map((stat) => (
+              <Col span={24} className="stat-col">
+                <div className="stat-name">
+                  <span>{stat.icon}</span>
+                  <span>{stat.title}</span>
+                </div>
+                <span className="stat-value">{stat.value}</span>
+              </Col>
+            ))}
+          </Row>
+        </Col>
+
+        <Col span={14}>
+          <Title level={3}>What is {coin.name}</Title>
+          {/* {HTMLReactParser(details.description)} */}
         </Col>
       </Row>
     </>
