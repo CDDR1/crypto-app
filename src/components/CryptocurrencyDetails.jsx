@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Typography, Select, Col, Row } from "antd";
 import { DollarCircleOutlined, NumberOutlined, ThunderboltOutlined, CloseOutlined, CheckOutlined, TrophyOutlined, LineChartOutlined, MoneyCollectOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
 import CryptoChart from "./CryptoChart";
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -74,7 +74,7 @@ const CryptocurrencyDetails = () => {
         </div>
       </div>
       <CryptoChart history={history.data.history} />
-      <Row gutter={32}>
+      <Row gutter={[48, 48]}>
         <Col span={14}>
           <Title level={3}>{coin.name} Value Statistics</Title>
           <p className="coin-statistics-description">An overview showing the statistics of {coin.name}, such as the base and the quote currency, the rank, and trading volume.</p>
@@ -110,6 +110,18 @@ const CryptocurrencyDetails = () => {
         <Col span={14}>
           <Title level={3}>What is {coin.name}?</Title>
           {parse(details.description)}
+        </Col>
+
+        <Col span={10}>
+          <Title level={3}>{coin.name} Links</Title>
+          <Row>
+            {details.links.map((link) => (
+              <Col span={24} className="stat-col">
+                <span>{link.type}</span>
+                <a href={link.url} target="_blank">{link.name}</a>
+              </Col>
+            ))}
+          </Row>
         </Col>
       </Row>
     </>
