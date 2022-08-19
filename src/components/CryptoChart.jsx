@@ -10,22 +10,23 @@ const CryptoChart = ({ history }) => {
       legend: {
         position: "top",
       },
-      title: {
-        display: true,
-        text: "Chart.js Line Chart",
-      },
     },
   };
 
-  const labels = history.map(item => new Date(item.timestamp).toLocaleDateString());
-  const prices = history.map(item => item.price);
+  const timestamps = [];
+  const prices = [];
+  for (let i = history.length - 1; i >= 0; i--) {
+    timestamps.push(new Date(history[i].timestamp * 1000).toLocaleDateString());
+    prices.push(history[i].price);
+  }
+
 
   const data = {
-    labels: labels,
+    labels: timestamps,
     datasets: [{
       label: "Price in USD",
-      backgroundColor: "rgb(255, 99, 132)",
-      borderColor: "rgb(255, 99, 132)",
+      backgroundColor: "#0071bd",
+      borderColor: "#0071bd",
       data: prices,
     }]
   };

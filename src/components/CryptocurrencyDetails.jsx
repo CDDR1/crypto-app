@@ -18,8 +18,6 @@ const CryptocurrencyDetails = () => {
 
   if (fetchingCoins || fetchingHistory) return "Loading...";
 
-  console.log(history)
-
   const filteredCoin = data.data.coins.filter((coin) => coin.uuid === id);
   const coin = filteredCoin[0];
 
