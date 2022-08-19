@@ -97,6 +97,18 @@ html {
   gap: 0.5rem;
 }
 
+/* || CRYPTOCURRENCY DETAILS */
+.stat-col {
+  border-bottom: 1px solid #d9d9d9;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-col:hover {
+  background-color: #F9F9F9;
+}
+
 /* || NEWS SECTION */
 .news-card-heading,
 .news-card-bottom {

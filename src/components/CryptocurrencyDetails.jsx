@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useGetCoinsQuery, useGetCoinHistoryQuery, useGetCoinDetailsQuery } from "../slices/coinsSlice";
 import { useState } from "react";
-import { Typography, Select } from "antd";
+import { Typography, Select, Col, Row } from "antd";
+import { DollarCircleOutlined, NumberOutlined, ThunderboltOutlined, TrophyOutlined } from "@ant-design/icons";
 import CryptoChart from "./CryptoChart";
 
 const { Title } = Typography;
 const { Option } = Select;
+const { Text } = Typography;
 
 const CryptocurrencyDetails = () => {
   const time = ["3h", "24h", "7d", "30d", "1y", "3m", "3y", "5y"];
@@ -21,6 +23,15 @@ const CryptocurrencyDetails = () => {
 
   const filteredCoin = data.data.coins.filter((coin) => coin.uuid === id);
   const coin = filteredCoin[0];
+
+  const details = coinDetails.data.coin;
+  const valueStats = [
+    {icon: <DollarCircleOutlined />, title: "Price to USD", value: `$ ${details.price}`},
+    {icon: <NumberOutlined />, title: "Rank", value: details.rank},
+    {icon: <ThunderboltOutlined />, title: "24h Volume", value: `$ ${details["24hVolume"]}`},
+    {icon: <DollarCircleOutlined />, title: "Market Cap", value: `$ ${details.marketCap}`},
+    {icon: <TrophyOutlined />, title: "All-time-high (dailyavg.)", value: `$ ${details.allTimeHigh.price}`}
+  ]
 
   return (
     <>
@@ -54,6 +65,32 @@ const CryptocurrencyDetails = () => {
         </div>
       </div>
       <CryptoChart history={history.data.history} />
+      <Row gutter={16}>
+        <Col span={12}>
+          <Title level={3}>{coin.name} Value Statistics</Title>
+          <p className="coin-statistics-description">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod quae velit at corrupti illo laborum voluptatem nesciunt perferendis fugiat assumenda.
+          </p>
+          <Row>
+            {
+              valueStats.map(stat => 
+              <Col span={24} className="stat-col">
+                <div className="stat-name">
+                  <span>
+                    {stat.icon}
+                  </span>
+                  <span>
+                    {stat.title}
+                  </span>
+                </div>
+                <span className="stat-value">
+                  {stat.value}
+                </span>
+              </Col>)
+            }
+          </Row>
+        </Col>
+      </Row>
     </>
   );
 };
