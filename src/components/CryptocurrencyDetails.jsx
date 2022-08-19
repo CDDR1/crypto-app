@@ -54,7 +54,7 @@ const CryptocurrencyDetails = () => {
           </ul>
         </div>
       </div>
-      <CryptoChart />
+      <CryptoChart history={history.data.history} />
     </>
   );
 };
