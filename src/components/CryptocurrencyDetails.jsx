@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Typography, Select, Col, Row } from "antd";
 import { DollarCircleOutlined, NumberOutlined, ThunderboltOutlined, CloseOutlined, CheckOutlined, TrophyOutlined, LineChartOutlined, MoneyCollectOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
 import CryptoChart from "./CryptoChart";
+import parse from 'html-react-parser';
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -107,8 +108,8 @@ const CryptocurrencyDetails = () => {
         </Col>
 
         <Col span={14}>
-          <Title level={3}>What is {coin.name}</Title>
-          {/* {HTMLReactParser(details.description)} */}
+          <Title level={3}>What is {coin.name}?</Title>
+          {parse(details.description)}
         </Col>
       </Row>
     </>
