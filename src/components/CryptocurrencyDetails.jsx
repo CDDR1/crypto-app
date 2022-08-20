@@ -5,6 +5,7 @@ import { Typography, Select, Col, Row } from "antd";
 import { DollarCircleOutlined, NumberOutlined, ThunderboltOutlined, CloseOutlined, CheckOutlined, TrophyOutlined, LineChartOutlined, MoneyCollectOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
 import CryptoChart from "./CryptoChart";
 import parse from "html-react-parser";
+import millify from "millify";
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -24,21 +25,21 @@ const CryptocurrencyDetails = () => {
   const filteredCoin = data.data.coins.filter((coin) => coin.uuid === id);
   const coin = filteredCoin[0];
 
-  const details = coinDetails.data.coin;
+  const details = coinDetails.data.coin; console.log(details)////////////////
   const valueStats = [
-    { icon: <DollarCircleOutlined />, title: "Price to USD", value: `$ ${details.price}` },
+    { icon: <DollarCircleOutlined />, title: "Price to USD", value: `$ ${millify(details.price)}` },
     { icon: <NumberOutlined />, title: "Rank", value: details.rank },
-    { icon: <ThunderboltOutlined />, title: "24h Volume", value: `$ ${details["24hVolume"]}` },
-    { icon: <DollarCircleOutlined />, title: "Market Cap", value: `$ ${details.marketCap}` },
-    { icon: <TrophyOutlined />, title: "All-time-high (dailyavg.)", value: `$ ${details.allTimeHigh.price}` },
+    { icon: <ThunderboltOutlined />, title: "24h Volume", value: `$ ${millify(details["24hVolume"])}` },
+    { icon: <DollarCircleOutlined />, title: "Market Cap", value: `$ ${millify(details.marketCap)}` },
+    { icon: <TrophyOutlined />, title: "All-time-high (dailyavg.)", value: `$ ${millify(details.allTimeHigh.price)}` },
   ];
 
   const otherStats = [
     { icon: <LineChartOutlined />, title: "Number of Markets", value: details.numberOfMarkets },
     { icon: <MoneyCollectOutlined />, title: "Number of Exchanges", value: details.numberOfExchanges },
     { icon: <ExclamationCircleOutlined />, title: "Approved Supply", value: details.supply.confirmed ? <CheckOutlined /> : <CloseOutlined /> },
-    { icon: <ExclamationCircleOutlined />, title: "Total Supply", value: details.supply.total },
-    { icon: <ExclamationCircleOutlined />, title: "Circulating Supply", value: details.supply.circulating },
+    { icon: <ExclamationCircleOutlined />, title: "Total Supply", value: millify(details.supply.total) },
+    { icon: <ExclamationCircleOutlined />, title: "Circulating Supply", value: millify(details.supply.circulating) },
   ];
 
   return (
@@ -68,7 +69,7 @@ const CryptocurrencyDetails = () => {
           <ul className="stats">
             <li className="stat">Change: {history.data.change}%</li>
             <li className="stat">
-              Current {coin.name} Price: $ {history.data.history[0].price}
+              Current {coin.name} Price: $ {millify(history.data.history[0].price)}
             </li>
           </ul>
         </div>
