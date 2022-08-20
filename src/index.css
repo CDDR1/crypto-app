@@ -216,7 +216,7 @@ li {
 .footer {
   background-color: var(--color-primary);
   color: #fff;
-  height: 100%;
+  max-height: 100%;
   width: calc(100% - 280px);
   font-size: 1rem;
   margin-left: 280px;
