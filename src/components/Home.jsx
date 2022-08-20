@@ -11,7 +11,7 @@ const { Title } = Typography;
 
 const Home = () => {
   const { data: coins, isFetching: loadingCoins } = useGetCoinsQuery();
-  const { data: news, isFetching: loadingNews } = useGetNewsQuery();
+  const { data: news, isFetching: loadingNews } = useGetNewsQuery("cryptocurrency");
   
   if (loadingCoins || loadingNews) return <Loader />;
 
