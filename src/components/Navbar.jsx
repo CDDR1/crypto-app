@@ -48,7 +48,7 @@ const Navbar = () => {
             <Avatar size={64} src={logo} />
           </div>
           <div className="title-container">
-            <Title className="title">CryptoHub</Title>
+            <Title className="nav-main-title">CryptoHub</Title>
           </div>
         </div>
         <div className="menu-container">
