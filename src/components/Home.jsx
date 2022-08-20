@@ -11,9 +11,8 @@ const { Title } = Typography;
 
 const Home = () => {
   const { data: coins, isFetching: loadingCoins } = useGetCoinsQuery();
-  const { data: news, isFetching: loadingNews } = useGetNewsQuery("cryptocurrency");
   
-  if (loadingCoins || loadingNews) return <Loader />;
+  if (loadingCoins) return <Loader />;
 
   const { total, totalExchanges, totalMarketCap, total24hVolume, totalMarkets } = coins.data.stats;
 
