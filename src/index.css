@@ -31,6 +31,7 @@ li {
 
 .right-content {
   width: 100%;
+  min-height: 100%;
   background-color: #e9e9e9f3;
   display: flex;
   flex-direction: column;
@@ -291,10 +292,15 @@ li {
 
   .main-content {
     margin: 0;
+    min-height: calc(100vh - 18vh);
   }
 
   .footer {
     width: 100%;
     margin: 0;
+  }
+
+  .loader-container {
+    min-height: calc(100vh - 30vh);
   }
 }
