@@ -1,9 +1,7 @@
 import CryptoCard from "./CryptoCard";
-import { Row, Col } from "antd";
+import { Row, Col, Typography, Input } from "antd";
 import { useGetCoinsQuery } from "../slices/coinsSlice";
 import { Link } from "react-router-dom";
-import { Typography } from "antd";
-import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import Loader from "./Loader";
@@ -50,7 +48,7 @@ const Cryptocurrencies = ({ simplified }) => {
           </div>
         </div>
       }
-      <Row gutter={[32, 32]}>
+      <Row gutter={[32, 32]} className="cards-container">
         {
           cryptoCards.filter(cryptoCard => {
             const cryptoCardName = cryptoCard.props.children.props.children.props.name;
