@@ -1,6 +1,7 @@
 import { Row, Col, Select, Typography } from "antd";
 import { useGetNewsQuery } from "../slices/newsSlice";
 import { useGetCoinsQuery } from "../slices/coinsSlice";
+import Loader from "./Loader";
 import { useState } from "react";
 import NewsCard from "./NewsCard";
 import { v4 as uuidv4 } from 'uuid';
@@ -16,7 +17,7 @@ const News = ({ simplified }) => {
   const { data, isFetching: fetchingNews } = useGetNewsQuery({ selection });
   const { data: coins, isFetching: fetchingCoins } = useGetCoinsQuery();
 
-  if (fetchingNews || fetchingCoins) return "Loading...";
+  if (fetchingNews || fetchingCoins) return <Loader />;
 
   const newsArticles = simplified ? data.value.slice(0, 9) : data.value;
 

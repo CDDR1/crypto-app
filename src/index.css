@@ -71,6 +71,7 @@ li {
 /* || MAIN CONTENT */
 .main-content {
   padding: 32px;
+  height: 100%;
 }
 
 /* || SECTION */
@@ -233,6 +234,14 @@ li {
   text-decoration: none;
   list-style: none;
   display: inline-block;
+}
+
+/* || LOADER */
+.loader-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* || RESPONSIVE */

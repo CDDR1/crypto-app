@@ -1,5 +1,6 @@
 import { Typography, Col, Row, Statistic } from "antd";
 import Cryptocurrencies from "./Cryptocurrencies";
+import Loader from "./Loader";
 import News from "../components/News";
 import { useGetCoinsQuery } from "../slices/coinsSlice";
 import { useGetNewsQuery } from "../slices/newsSlice";
@@ -12,7 +13,7 @@ const Home = () => {
   const { data: coins, isFetching: loadingCoins } = useGetCoinsQuery();
   const { data: news, isFetching: loadingNews } = useGetNewsQuery();
   
-  if (loadingCoins || loadingNews) return "Loading...";
+  if (loadingCoins || loadingNews) return <Loader />;
 
   const { total, totalExchanges, totalMarketCap, total24hVolume, totalMarkets } = coins.data.stats;
 

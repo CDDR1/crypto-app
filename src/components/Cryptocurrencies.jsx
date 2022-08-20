@@ -6,15 +6,18 @@ import { Typography } from "antd";
 import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useState } from "react";
+import Loader from "./Loader";
 
 const { Title } = Typography;
 
 const Cryptocurrencies = ({ simplified }) => {
-  const { data } = useGetCoinsQuery();
-
-  const coins = simplified ? data.data.coins.slice(0, 10) : data.data.coins;
+  const { data, isFetching } = useGetCoinsQuery();
 
   const [searchText, setSearchText] = useState("");
+
+  if (isFetching) return <Loader />;
+
+  const coins = simplified ? data.data.coins.slice(0, 10) : data.data.coins;
 
   const cryptoCards = coins.map((coin) => 
     <Col xs={24} md={12} xl={8} xxl={6} key={coin.uuid}>

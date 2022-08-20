@@ -1,3 +1,4 @@
+import Loader from "./Loader";
 import { useParams } from "react-router-dom";
 import { useGetCoinsQuery, useGetCoinHistoryQuery, useGetCoinDetailsQuery } from "../slices/coinsSlice";
 import { useState } from "react";
@@ -20,7 +21,7 @@ const CryptocurrencyDetails = () => {
   const { data: history, isFetching: fetchingHistory } = useGetCoinHistoryQuery({ id, chartTime });
   const { data: coinDetails, isFetching: fetchingCoinDetails } = useGetCoinDetailsQuery({ id, chartTime });
 
-  if (fetchingCoins || fetchingHistory || fetchingCoinDetails) return "Loading...";
+  if (fetchingCoins || fetchingHistory || fetchingCoinDetails) return <Loader />;
 
   const filteredCoin = data.data.coins.filter((coin) => coin.uuid === id);
   const coin = filteredCoin[0];
