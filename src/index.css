@@ -102,6 +102,13 @@ li {
   gap: 0.5rem;
 }
 
+.not-found {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* || CRYPTOCURRENCY DETAILS */
 .details-text {
   opacity: 0.7;

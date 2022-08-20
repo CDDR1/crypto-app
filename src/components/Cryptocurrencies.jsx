@@ -31,6 +31,11 @@ const Cryptocurrencies = ({ simplified }) => {
     </Col>
   );
 
+  const filteredCards = cryptoCards.filter(cryptoCard => {
+    const cryptoCardName = cryptoCard.props.children.props.children.props.name;
+    return cryptoCardName.toLowerCase().includes(searchText.toLowerCase());
+  });
+
   return (
     <>
       {
@@ -50,10 +55,7 @@ const Cryptocurrencies = ({ simplified }) => {
       }
       <Row gutter={[32, 32]} className="cards-container">
         {
-          cryptoCards.filter(cryptoCard => {
-            const cryptoCardName = cryptoCard.props.children.props.children.props.name;
-            return cryptoCardName.toLowerCase().includes(searchText.toLowerCase());
-          })
+          filteredCards.length === 0 ? <Title level={3} className="not-found">No cryptocurrencies match the search.</Title> : filteredCards
         }
       </Row>
     </>
