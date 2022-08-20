@@ -27,9 +27,9 @@ const Navbar = () => {
   };
 
   const items = [
-    getItem("Home", "1", <Link to="/"><HomeOutlined /></Link>),
-    getItem("Cryptocurrencies", "2", <Link to="/cryptocurrencies"><LineChartOutlined /></Link>),
-    getItem("News", "3", <Link to="/news"><BulbOutlined /></Link>)
+    getItem(<Link to="/">Home</Link>, "1", <HomeOutlined />),
+    getItem(<Link to="/cryptocurrencies">Cryptocurrencies</Link>, "2", <LineChartOutlined />),
+    getItem(<Link to="/news">News</Link>, "3", <BulbOutlined />)
   ];
 
   const menu = (
