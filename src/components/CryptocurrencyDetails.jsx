@@ -129,7 +129,7 @@ const CryptocurrencyDetails = () => {
           <Row>
             {details.links.map((link, index) => (
               <Col span={24} className="stat-col" key={index}>
-                <span class="link-type">{link.type}</span>
+                <span className="link-type">{link.type}</span>
                 <a href={link.url} target="_blank">
                   {link.name}
                 </a>
