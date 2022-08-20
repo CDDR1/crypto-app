@@ -20,7 +20,6 @@ const CryptocurrencyDetails = () => {
   const { data: coinDetails, isFetching: fetchingCoinDetails } = useGetCoinDetailsQuery({ id, chartTime });
 
   if (fetchingCoins || fetchingHistory || fetchingCoinDetails) return "Loading...";
-  console.log(coinDetails);
 
   const filteredCoin = data.data.coins.filter((coin) => coin.uuid === id);
   const coin = filteredCoin[0];
@@ -45,15 +44,16 @@ const CryptocurrencyDetails = () => {
   return (
     <>
       <div className="details-header">
-        <Title level={2}>{`${coin.name} (${coin.symbol}) Price`}</Title>
-        <p>{`${coin.name} live price in US Dollar (USD). View value statistics, market cap and supply.`}</p>
+        <Title level={2} className="title-stats">{`${coin.name} (${coin.symbol}) Price`}</Title>
+        <p className="details-text">{`${coin.name} live price in US Dollar (USD). View value statistics, market cap and supply.`}</p>
       </div>
-      <hr />
+      <hr className="line" />
       <div className="chart-heading">
         <Select
           defaultValue={chartTime}
           style={{
-            width: 140,
+            width: 160,
+            marginBottom: 10
           }}
           onChange={(value) => setChartTime(value)}
         >
@@ -64,7 +64,7 @@ const CryptocurrencyDetails = () => {
           ))}
         </Select>
         <div className="chart-title-stats">
-          <Title level={3}>{coin.name} Price Chart</Title>
+          <Title level={3} className="title-stats">{coin.name} Price Chart</Title>
           <ul className="stats">
             <li className="stat">Change: {history.data.change}%</li>
             <li className="stat">
@@ -74,14 +74,15 @@ const CryptocurrencyDetails = () => {
         </div>
       </div>
       <CryptoChart history={history.data.history} />
-      <Row gutter={[48, 48]}>
+      <Row gutter={[48, 48]} className="coin-details">
+
         <Col xs={24} lg={12} xxl={14}>
-          <Title level={3}>{coin.name} Value Statistics</Title>
-          <p className="coin-statistics-description">An overview showing the statistics of {coin.name}, such as the base and the quote currency, the rank, and trading volume.</p>
+          <Title level={3} className="title-stats">{coin.name} Value Statistics</Title>
+          <p className="coin-statistics-description details-text">An overview showing the statistics of {coin.name}, such as the base and the quote currency, the rank, and trading volume.</p>
           <Row>
-            {valueStats.map((stat) => (
-              <Col span={24} className="stat-col">
-                <div className="stat-name">
+            {valueStats.map((stat, index) => (
+              <Col span={24} className="stat-col" key={index}>
+                <div className="stat-name details-text">
                   <span>{stat.icon}</span>
                   <span>{stat.title}</span>
                 </div>
@@ -92,12 +93,12 @@ const CryptocurrencyDetails = () => {
         </Col>
 
         <Col xs={24} lg={12} xxl={10}>
-          <Title level={3}>Other Stats Info</Title>
-          <p>An overall look to relevant statistics in the crypto world, involving exhanges and currencies.</p>
+          <Title level={3} className="title-stats">Other Stats Info</Title>
+          <p className="details-text">An overall look to relevant statistics in the crypto world, involving exhanges and currencies.</p>
           <Row>
-            {otherStats.map((stat) => (
-              <Col span={24} className="stat-col">
-                <div className="stat-name">
+            {otherStats.map((stat, index) => (
+              <Col span={24} className="stat-col" key={index}>
+                <div className="stat-name details-text">
                   <span>{stat.icon}</span>
                   <span>{stat.title}</span>
                 </div>
@@ -107,22 +108,23 @@ const CryptocurrencyDetails = () => {
           </Row>
         </Col>
 
-        <Col xs={24} lg={12} xxl={14}>
-          <Title level={3}>What is {coin.name}?</Title>
+        <Col xs={24} lg={12} xxl={14} className="coin-description">
+          <Title level={3} className="title-stats">What is {coin.name}?</Title>
           {parse(details.description)}
         </Col>
 
         <Col xs={24} lg={12} xxl={10}>
-          <Title level={3}>{coin.name} Links</Title>
+          <Title level={3} className="title-stats">{coin.name} Links</Title>
           <Row>
-            {details.links.map((link) => (
-              <Col span={24} className="stat-col">
-                <span>{link.type}</span>
+            {details.links.map((link, index) => (
+              <Col span={24} className="stat-col" key={index}>
+                <span class="link-type">{link.type}</span>
                 <a href={link.url} target="_blank">{link.name}</a>
               </Col>
             ))}
           </Row>
         </Col>
+
       </Row>
     </>
   );

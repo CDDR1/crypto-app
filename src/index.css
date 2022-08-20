@@ -18,6 +18,10 @@ html {
   margin: 0;
 }
 
+li {
+  list-style: none;
+}
+
 /* || APP */
 .app {
   min-height: 100vh;
@@ -98,6 +102,43 @@ html {
 }
 
 /* || CRYPTOCURRENCY DETAILS */
+.details-text {
+  opacity: 0.7;
+}
+
+.details-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-stats {
+  color: #0071bd !important;
+}
+
+.line {
+  margin-bottom: 1rem;
+  opacity: 0.4;
+}
+
+.chart-title-stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stats {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.stat {
+  font-weight: 800;
+}
+
+.coin-details {
+  margin-top: 3.5rem;
+}
+
 .stat-col {
   border-bottom: 1px solid #d9d9d9;
   padding: 20px;
@@ -107,6 +148,27 @@ html {
 
 .stat-col:hover {
   background-color: #F9F9F9;
+}
+
+.stat-name {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.stat-value {
+  font-weight: 800;
+}
+
+.coin-description > h3 {
+  font-weight: 800;
+}
+
+.coin-description > p {
+  opacity: 0.7;
+}
+
+.link-type {
+  font-weight: 600;
 }
 
 /* || NEWS SECTION */
