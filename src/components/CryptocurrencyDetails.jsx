@@ -75,7 +75,7 @@ const CryptocurrencyDetails = () => {
       </div>
       <CryptoChart history={history.data.history} />
       <Row gutter={[48, 48]}>
-        <Col span={14}>
+        <Col xs={24} lg={12} xxl={14}>
           <Title level={3}>{coin.name} Value Statistics</Title>
           <p className="coin-statistics-description">An overview showing the statistics of {coin.name}, such as the base and the quote currency, the rank, and trading volume.</p>
           <Row>
@@ -91,7 +91,7 @@ const CryptocurrencyDetails = () => {
           </Row>
         </Col>
 
-        <Col span={10}>
+        <Col xs={24} lg={12} xxl={10}>
           <Title level={3}>Other Stats Info</Title>
           <p>An overall look to relevant statistics in the crypto world, involving exhanges and currencies.</p>
           <Row>
@@ -107,12 +107,12 @@ const CryptocurrencyDetails = () => {
           </Row>
         </Col>
 
-        <Col span={14}>
+        <Col xs={24} lg={12} xxl={14}>
           <Title level={3}>What is {coin.name}?</Title>
           {parse(details.description)}
         </Col>
 
-        <Col span={10}>
+        <Col xs={24} lg={12} xxl={10}>
           <Title level={3}>{coin.name} Links</Title>
           <Row>
             {details.links.map((link) => (
