@@ -25,7 +25,7 @@ const CryptocurrencyDetails = () => {
   const filteredCoin = data.data.coins.filter((coin) => coin.uuid === id);
   const coin = filteredCoin[0];
 
-  const details = coinDetails.data.coin; console.log(details)////////////////
+  const details = coinDetails.data.coin;
   const valueStats = [
     { icon: <DollarCircleOutlined />, title: "Price to USD", value: `$ ${millify(details.price)}` },
     { icon: <NumberOutlined />, title: "Rank", value: details.rank },
@@ -54,7 +54,7 @@ const CryptocurrencyDetails = () => {
           defaultValue={chartTime}
           style={{
             width: 160,
-            marginBottom: 10
+            marginBottom: 10,
           }}
           onChange={(value) => setChartTime(value)}
         >
@@ -65,7 +65,9 @@ const CryptocurrencyDetails = () => {
           ))}
         </Select>
         <div className="chart-title-stats">
-          <Title level={3} className="title-stats">{coin.name} Price Chart</Title>
+          <Title level={3} className="title-stats">
+            {coin.name} Price Chart
+          </Title>
           <ul className="stats">
             <li className="stat">Change: {history.data.change}%</li>
             <li className="stat">
@@ -76,9 +78,10 @@ const CryptocurrencyDetails = () => {
       </div>
       <CryptoChart history={history.data.history} />
       <Row gutter={[48, 48]} className="coin-details">
-
         <Col xs={24} lg={12} xxl={14}>
-          <Title level={3} className="title-stats">{coin.name} Value Statistics</Title>
+          <Title level={3} className="title-stats">
+            {coin.name} Value Statistics
+          </Title>
           <p className="coin-statistics-description details-text">An overview showing the statistics of {coin.name}, such as the base and the quote currency, the rank, and trading volume.</p>
           <Row>
             {valueStats.map((stat, index) => (
@@ -94,7 +97,9 @@ const CryptocurrencyDetails = () => {
         </Col>
 
         <Col xs={24} lg={12} xxl={10}>
-          <Title level={3} className="title-stats">Other Stats Info</Title>
+          <Title level={3} className="title-stats">
+            Other Stats Info
+          </Title>
           <p className="details-text">An overall look to relevant statistics in the crypto world, involving exhanges and currencies.</p>
           <Row>
             {otherStats.map((stat, index) => (
@@ -110,22 +115,27 @@ const CryptocurrencyDetails = () => {
         </Col>
 
         <Col xs={24} lg={12} xxl={14} className="coin-description">
-          <Title level={3} className="title-stats">What is {coin.name}?</Title>
+          <Title level={3} className="title-stats">
+            What is {coin.name}?
+          </Title>
           {parse(details.description)}
         </Col>
 
         <Col xs={24} lg={12} xxl={10}>
-          <Title level={3} className="title-stats">{coin.name} Links</Title>
+          <Title level={3} className="title-stats">
+            {coin.name} Links
+          </Title>
           <Row>
             {details.links.map((link, index) => (
               <Col span={24} className="stat-col" key={index}>
                 <span class="link-type">{link.type}</span>
-                <a href={link.url} target="_blank">{link.name}</a>
+                <a href={link.url} target="_blank">
+                  {link.name}
+                </a>
               </Col>
             ))}
           </Row>
         </Col>
-
       </Row>
     </>
   );
